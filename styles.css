@@ -1,22 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 :root {
-    --dark: #040321;
-    --element: #1b1b28;
+    /* --dark: #040321;
+    --element: #1b1b28; */
+    --VeryLightGray: hsl(0, 0%, 98%);
+    --VeryLightGrayishBlue: hsl(236, 33%, 92%);
+    --LightGrayishBlue: hsl(233, 11%, 84%);
+    --DarkGrayishBlue: hsl(236, 9%, 61%);
+    --VeryDarkGrayishBlue: hsl(235, 19%, 35%);
+    --VeryDarkBlue: hsl(235, 21%, 11%);
+    --VeryDarkDesaturatedBlue: hsl(235, 24%, 19%);
+    --LightGrayishBlue: hsl(234, 39%, 85%);
+    --LightGrayishBlue-hover: hsl(236, 33%, 92%);
+    --DarkGrayishBlue: hsl(234, 11%, 52%);
+    --VeryDarkGrayishBlue: hsl(233, 14%, 35%);
+    --VeryDarkGrayishBlue: hsl(237, 14%, 26%);
 }
 
 body {
     margin: 0;
     padding: 0;
-    background-color: var(--dark);
+    background-color: var(--VeryDarkBlue);
     color: aliceblue;
     background-image: url("./images/bg-desktop-dark.jpg");
     background-repeat: no-repeat;
     background-size: contain;
+    font-size: 18px;
+    font-family: "Josefin Sans", sans-serif;
 }
 
 .Main {
     width: 37%;
     margin: auto;
-    border: solid 2px green;
 }
 
 .Header {
@@ -37,7 +51,6 @@ body {
 
 .Header-content h1 {
     font-size: 36px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     font-weight: 700;
     letter-spacing: 10px;
 }
@@ -55,7 +68,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: start;
-    background-color: var(--element);
+    background-color: var(--VeryDarkDesaturatedBlue);
 }
 
 .add-todo-content input[type="text"] {
@@ -64,15 +77,11 @@ body {
     height: 50px;
     background-color: transparent;
     color: aliceblue;
+    font-size: 18px;
 }
 
 .add-todo-content input[type="text"]:focus {
     outline: none;
-    font-size: 18px;
-}
-
-.add-todo-content input[type="text"]::placeholder {
-    font-size: 18px;
 }
 
 .add-todo-content input[type="radio"] {

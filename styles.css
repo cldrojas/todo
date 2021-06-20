@@ -2,6 +2,7 @@
 :root {
     /* --dark: #040321;
     --element: #1b1b28; */
+    --ReferenceBlue: hsl(228, 45%, 44%);
     --VeryLightGray: hsl(0, 0%, 98%);
     --VeryLightGrayishBlue: hsl(236, 33%, 92%);
     --LightGrayishBlue: hsl(233, 11%, 84%);
@@ -20,7 +21,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--VeryDarkBlue);
-    color: aliceblue;
+    color: var(--DarkGrayishBlue);
     background-image: url("./images/bg-desktop-dark.jpg");
     background-repeat: no-repeat;
     background-size: contain;
@@ -55,23 +56,27 @@ body {
     letter-spacing: 10px;
 }
 
-.add-todo {
+.List {
+    margin: 0;
+}
+
+.Todo-item-add {
     height: 90px;
-    margin: 1em 0 1em 0;
+    margin: 1em 0 0.1em 0;
 }
 
-.add-todo-container {
-    box-shadow: 10px #2b2b2b;
+.Todo-item {
+    margin: 2px;
 }
 
-.add-todo-content {
+.Todo-item-content {
     display: flex;
     align-items: center;
     justify-content: start;
     background-color: var(--VeryDarkDesaturatedBlue);
 }
 
-.add-todo-content input[type="text"] {
+.Todo-item-content input[type="text"] {
     display: flex;
     border-style: none;
     height: 50px;
@@ -80,11 +85,11 @@ body {
     font-size: 18px;
 }
 
-.add-todo-content input[type="text"]:focus {
+.Todo-item-content input[type="text"]:focus {
     outline: none;
 }
 
-.add-todo-content input[type="radio"] {
+.Todo-item-content input[type="radio"] {
     opacity: 0;
     width: 0;
     height: 0;
@@ -99,11 +104,63 @@ body {
     border: 0.1em solid darkslategrey;
 }
 
+._radio:checked {
+    background-image: url(/images/icon-check.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Todo-info {
+    height: 40px;
+}
+
+.Todo-info-container {
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: var(--VeryDarkDesaturatedBlue);
+}
+
+.Todo-info-content {
+    width: 95%;
+    align-items: center;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Todo-info-content :last-child {
+    cursor: pointer;
+}
+
+.actions {
+    margin: 1px;
+    font-size: 18px;
+    width: 40%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions>.active {
+    color: var(--ReferenceBlue);
+}
+
+.actions span :hover {
+    color: aliceblue;
+}
+
+.List {
+    background-color: rgba(255, 0, 0, 0.425);
+    box-shadow: var(--VeryDarkGrayishBlue) 0px 0px 3px 2px;
+}
+
 .attribution {
+    margin-top: 30px;
     font-size: 11px;
     text-align: center;
 }
 
 .attribution a {
-    color: hsl(228, 45%, 44%);
+    color: var(--ReferenceBlue);
 }

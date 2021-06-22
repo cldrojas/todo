@@ -23,7 +23,7 @@ body {
     padding: 0;
     background-color: var(--VeryDarkBlue);
     color: var(--DarkGrayishBlue);
-    background-image: url("/src/images/bg-desktop-dark.jpg");
+    background-image: url("/public/images/bg-desktop-dark.jpg");
     background-repeat: no-repeat;
     background-size: contain;
     font-size: 18px;

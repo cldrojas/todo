@@ -8,7 +8,7 @@ module.exports = {
     output: {
         filename: "main.js",
         path: path.resolve(__dirname, "dist/"),
-        assetModuleFilename: "images/[hash][ext][query]",
+
         publicPath: "/",
     },
     module: {
@@ -40,7 +40,7 @@ module.exports = {
         }),
         new CopPlugin({
             patterns: [{
-                from: path.resolve(__dirname, "src", "images"),
+                from: path.resolve(__dirname, "public", "images"),
                 to: "images",
             }, ],
         }),

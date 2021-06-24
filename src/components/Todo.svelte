@@ -5,16 +5,13 @@
   const dispatch = createEventDispatcher();
 
   export let name;
-  export let done = false;
-
-  let estado = "pending";
+  export let done;
 
   //if you wonder $: its svelte way make reactive statement
-  $: estado = done ? "completed" : "";
+  $: estado = done ? "completed" : "pending";
 
   const completed = (id) => {
     done = !done;
-
     //Dispatch the doneite event with object data
     dispatch("done", { id, estado });
   };

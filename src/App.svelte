@@ -26,7 +26,6 @@
       ? (todos[id].status = "pending")
       : (todos[id].status = "completed");
     todos = [...todos];
-    console.log("lista actualizada: ", todos);
   }
 </script>
 
@@ -44,25 +43,9 @@
             {#if filter == "all"}
               <Todo
                 name={todo["name"]}
-                status={todo["status"]}
+                done={todo["status"] == "completed" ? true : false}
                 on:done={() => toggle(id)}
               />
-            {:else if filter == "completed"}
-              {#if todo.status == "completed"}
-                <Todo
-                  name={todo["name"]}
-                  status={todo["status"]}
-                  on:done={() => toggle(id)}
-                />
-              {/if}
-            {:else if filter == "pending"}
-              {#if todo.status == "pending"}
-                <Todo
-                  name={todo["name"]}
-                  status={todo["status"]}
-                  on:done={() => toggle(id)}
-                />
-              {/if}
             {/if}
           {/each}
         </div>

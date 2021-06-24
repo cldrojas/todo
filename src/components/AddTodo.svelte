@@ -1,8 +1,19 @@
+<script>
+  let todo = "";
+  export function add(todo) {}
+</script>
+
 <div class="Todo-item-add">
   <div class="Todo-item-container">
     <div class="Todo-item-content">
-      <span class="_radio"><input type="radio" name="new" id="new" /></span>
-      <input type="text" placeholder="Create a new todo..." />
+      <span class="radio" />
+      <form action="_">
+        <input
+          type="text"
+          placeholder="Create a new todo..."
+          bind:value={todo}
+        />
+      </form>
     </div>
   </div>
 </div>
@@ -24,35 +35,30 @@
     background-color: var(--VeryDarkDesaturatedBlue);
   }
 
-  .Todo-item-content input[type="text"] {
+  .Todo-item-content form > input {
     display: flex;
     border-style: none;
     height: 50px;
+    width: 60%;
     background-color: transparent;
     color: aliceblue;
     font-size: 18px;
   }
 
-  .Todo-item-content input[type="text"]:focus {
+  .Todo-item-content form > input:focus {
     outline: none;
   }
 
-  .Todo-item-content input[type="radio"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  ._radio {
-    display: block;
-    width: 1em;
-    height: 1em;
+  .radio {
+    display: flex;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     margin: 1em;
-    border: 0.1em solid darkslategrey;
+    border: 2px solid darkslategrey;
   }
 
-  ._radio:checked {
+  .radio:checked {
     background-image: url(/images/icon-check.svg);
     background-repeat: no-repeat;
     background-size: cover;

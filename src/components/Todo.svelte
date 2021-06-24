@@ -1,44 +1,60 @@
-<div class="Todo-item">
-  <div class="Todo-item-container">
-    <div class="Todo-item-content">
-      <span class="_radio"><input type="radio" name="new" id="new" /></span>
-      <input type="text" placeholder="Create a new todo..." />
+<script>
+  import { createEventDispatcher } from "svelte";
+
+  //Declare the dispatch
+  const dispatch = createEventDispatcher();
+
+  export let name;
+  export let done = false;
+
+  let estado = "pending";
+
+  //if you wonder $: its svelte way make reactive statement
+  $: estado = done ? "completed" : "";
+
+  const completed = (id) => {
+    done = !done;
+
+    //Dispatch the doneite event with object data
+    dispatch("done", { id, estado });
+  };
+</script>
+
+<div class="Todo">
+  <div class="Todo-container" on:click={completed}>
+    <div class="Todo-content">
+      <span class={estado} />
+      <div class="Todo-title">
+        <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
-  .Todo-item {
+  .Todo {
     margin: 1px 0 1px 0;
   }
 
-  .Todo-item-content {
+  .Todo-content {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: start;
     background-color: var(--VeryDarkDesaturatedBlue);
   }
 
-  .Todo-item-content input[type="text"] {
+  .Todo-title {
     display: flex;
     border-style: none;
     height: 50px;
     background-color: transparent;
     color: aliceblue;
     font-size: 18px;
+    align-items: center;
   }
 
-  .Todo-item-content input[type="text"]:focus {
-    outline: none;
-  }
-
-  .Todo-item-content input[type="radio"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  ._radio {
+  span {
     display: block;
     width: 1em;
     height: 1em;
@@ -47,9 +63,18 @@
     border: 0.1em solid darkslategrey;
   }
 
-  ._radio:checked {
+  span:hover {
+    border: 2px solid aliceblue;
+  }
+
+  .completed {
     background-image: url(/images/icon-check.svg);
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .dash {
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
   }
 </style>

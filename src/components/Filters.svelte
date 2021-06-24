@@ -1,6 +1,6 @@
-<div class="Todo-info">
-  <div class="Todo-info-container">
-    <div class="Todo-info-content">
+<div class="Filters">
+  <div class="Filters-container">
+    <div class="Filters-content">
       <span>3 items left</span>
       <div class="actions">
         <h5 class="active">All</h5>
@@ -13,18 +13,18 @@
 </div>
 
 <style>
-  .Todo-info {
+  .Filters {
     height: 40px;
   }
 
-  .Todo-info-container {
+  .Filters-container {
     height: 100%;
     display: flex;
     justify-content: space-evenly;
     background-color: var(--VeryDarkDesaturatedBlue);
   }
 
-  .Todo-info-content {
+  .Filters-content {
     width: 95%;
     align-items: center;
     font-size: 12px;
@@ -35,7 +35,7 @@
   .actions {
     margin: 1px;
     font-size: 18px;
-    width: 40%;
+    width: 45%;
     display: flex;
     justify-content: space-between;
   }
@@ -52,5 +52,11 @@
   .actions h5:hover {
     cursor: pointer;
     color: #fff;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .actions {
+      width: 40%;
+    }
   }
 </style>

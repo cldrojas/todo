@@ -2,12 +2,14 @@
   import Header from "./components/Header.svelte";
   import AddTodo from "./components/AddTodo.svelte";
   import Todo from "./components/Todo.svelte";
-  import TodoInfo from "./components/Filters.svelte";
   import Filters from "./components/Filters.svelte";
 
   let todos = [];
   let name = "";
   let filter = "all";
+  const forClear = "complete";
+  let remaining;
+  $: remaining = todos.filter((item) => item.status === "pending").length;
 
   function addTask() {
     todos = [
@@ -17,7 +19,6 @@
       },
       ...todos,
     ];
-
     name = "";
   }
 
@@ -28,9 +29,17 @@
     todos = [...todos];
   }
 
+  function remove(id) {
+    todos.splice(id, 1);
+    todos = [...todos];
+  }
+
+  function clear() {
+    todos = todos.filter((item) => item.status === "pending");
+  }
+
   function setFilter(value) {
     filter = value.detail.filter;
-    console.log("filtered value: ", value.detail.filter);
   }
 </script>
 
@@ -38,10 +47,10 @@
   <div class="App-container">
     <div class="App-content">
       <Header />
-      <div class="form">
-        <input type="text" bind:value={name} />
+      <form class="form" on:submit={(e) => e.preventDefault()}>
+        <input type="text" bind:value={name} on:submit={addTask} />
         <button on:click={addTask}>Add</button>
-      </div>
+      </form>
       <div class="todos">
         {#each todos as todo, id}
           {#if filter == "all"}
@@ -49,6 +58,7 @@
               name={todo["name"]}
               done={todo["status"] == "completed" ? true : false}
               on:done={() => toggle(id)}
+              on:remove={() => remove(id)}
             />
           {:else if filter == "completed"}
             {#if todo["status"] == "completed"}
@@ -56,6 +66,7 @@
                 name={todo["name"]}
                 done={todo["status"] == "completed" ? true : false}
                 on:done={() => toggle(id)}
+                on:remove={() => remove(id)}
               />
             {/if}
           {:else if filter == "pending"}
@@ -64,15 +75,20 @@
                 name={todo["name"]}
                 done={todo["status"] == "completed" ? true : false}
                 on:done={() => toggle(id)}
+                on:remove={() => remove(id)}
               />
             {/if}
           {/if}
         {/each}
       </div>
 
-      <Filters on:filtrate={(val) => setFilter(val)} />
+      <Filters
+        items={remaining}
+        on:clear={() => clear()}
+        on:filtrate={(val) => setFilter(val)}
+      />
     </div>
-    <h2>Filtro seleccionado: {filter}</h2>
+
     <div class="attribution">
       Challenge by <a
         href="https://www.frontendmentor.io?ref=challenge"

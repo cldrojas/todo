@@ -1,22 +1,25 @@
 <script>
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
-
+  export let items;
   export let filter;
   $: filter;
 
   const filtrate = (val) => {
     filter = val;
-    console.log("dispatch filter: ", val);
-    //Dispatch the doneite event with object data
     dispatch("filtrate", { filter });
+  };
+
+  const clear = () => {
+    console.log("clearing complete items");
+    dispatch("clear");
   };
 </script>
 
 <div class="Filters">
   <div class="Filters-container">
     <div class="Filters-content">
-      <span>3 items left</span>
+      <span>{items} items left</span>
       <div class="filter">
         <button
           class={filter == "all" ? "active" : ""}
@@ -37,7 +40,11 @@
           }}>Pending</button
         >
       </div>
-      <span>Close Completed</span>
+      <span
+        on:click={(id) => {
+          clear(id);
+        }}>Close Completed</span
+      >
     </div>
   </div>
 </div>

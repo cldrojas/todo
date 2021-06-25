@@ -9,7 +9,9 @@
 
   //if you wonder $: its svelte way make reactive statement
   $: estado = done ? "completed" : "pending";
-
+  const remove = (id) => {
+    dispatch("remove", { id });
+  };
   const completed = (id) => {
     done = !done;
     //Dispatch the doneite event with object data
@@ -18,12 +20,13 @@
 </script>
 
 <div class="Todo">
-  <div class="Todo-container" on:click={completed}>
+  <div class="Todo-container">
     <div class="Todo-content">
-      <span class={estado} />
+      <span class={estado} on:click={completed} />
       <div class="Todo-title">
         <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
       </div>
+      <span on:click={remove}>&#10006;</span>
     </div>
   </div>
 </div>

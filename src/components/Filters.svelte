@@ -11,7 +11,6 @@
   };
 
   const clear = () => {
-    console.log("clearing complete items");
     dispatch("clear");
   };
 </script>
@@ -23,28 +22,18 @@
       <div class="filter">
         <button
           class={filter == "all" ? "active" : ""}
-          on:click={() => {
-            filtrate("all");
-          }}>All</button
+          on:click={() => filtrate("all")}>All</button
         >
         <button
           class={filter == "completed" ? "active" : ""}
-          on:click={() => {
-            filtrate("completed");
-          }}>Completed</button
+          on:click={() => filtrate("completed")}>Completed</button
         >
         <button
           class={filter == "pending" ? "active" : ""}
-          on:click={() => {
-            filtrate("pending");
-          }}>Pending</button
+          on:click={() => filtrate("pending")}>Pending</button
         >
       </div>
-      <span
-        on:click={(id) => {
-          clear(id);
-        }}>Close Completed</span
-      >
+      <span on:click={(id) => clear(id)}>Close Completed</span>
     </div>
   </div>
 </div>

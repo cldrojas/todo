@@ -26,7 +26,7 @@
       <div class="Todo-title">
         <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
       </div>
-      <span on:click={remove}>&#10006;</span>
+      <button on:click={remove}>&#10006;</button>
     </div>
   </div>
 </div>
@@ -40,7 +40,9 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: space-between;
+    width: 60%;
+    border: solid 1px red;
     background-color: var(--VeryDarkDesaturatedBlue);
   }
 
@@ -52,6 +54,8 @@
     color: aliceblue;
     font-size: 18px;
     align-items: center;
+    width: 70%;
+    border: solid 1px blue;
   }
 
   span {

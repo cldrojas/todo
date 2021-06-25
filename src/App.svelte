@@ -1,24 +1,25 @@
 <script>
   import Header from "./components/Header.svelte";
-  import AddTodo from "./components/AddTodo.svelte";
   import Todo from "./components/Todo.svelte";
   import Filters from "./components/Filters.svelte";
 
   let todos = [];
   let name = "";
   let filter = "all";
-  const forClear = "complete";
   let remaining;
+
   $: remaining = todos.filter((item) => item.status === "pending").length;
 
   function addTask() {
-    todos = [
-      {
-        name: name,
-        status: "pending",
-      },
-      ...todos,
-    ];
+    if (name != "") {
+      todos = [
+        {
+          name: name,
+          status: "pending",
+        },
+        ...todos,
+      ];
+    }
     name = "";
   }
 
@@ -49,7 +50,7 @@
       <Header />
       <form class="form" on:submit={(e) => e.preventDefault()}>
         <input type="text" bind:value={name} on:submit={addTask} />
-        <button on:click={addTask}>Add</button>
+        <button hidden on:click={addTask} />
       </form>
       <div class="todos">
         {#each todos as todo, id}

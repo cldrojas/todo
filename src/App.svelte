@@ -49,7 +49,12 @@
     <div class="App-content">
       <Header />
       <form class="form" on:submit={(e) => e.preventDefault()}>
-        <input type="text" bind:value={name} on:submit={addTask} />
+        <input
+          type="text"
+          bind:value={name}
+          on:submit={addTask}
+          placeholder="Create a new todo..."
+        />
         <button hidden on:click={addTask} />
       </form>
       <div class="todos">

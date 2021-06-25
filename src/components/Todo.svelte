@@ -41,8 +41,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 60%;
-    border: solid 1px red;
+    width: 90%;
+
     background-color: var(--VeryDarkDesaturatedBlue);
   }
 
@@ -55,7 +55,6 @@
     font-size: 18px;
     align-items: center;
     width: 70%;
-    border: solid 1px blue;
   }
 
   span {

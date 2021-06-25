@@ -1,11 +1,41 @@
+<script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
+  export let filter;
+  $: filter;
+
+  const filtrate = (val) => {
+    filter = val;
+    console.log("dispatch filter: ", val);
+    //Dispatch the doneite event with object data
+    dispatch("filtrate", { filter });
+  };
+</script>
+
 <div class="Filters">
   <div class="Filters-container">
     <div class="Filters-content">
       <span>3 items left</span>
-      <div class="actions">
-        <h5 class="active">All</h5>
-        <h5>Active</h5>
-        <h5>Completed</h5>
+      <div class="filter">
+        <button
+          class={filter == "all" ? "active" : ""}
+          on:click={() => {
+            filtrate("all");
+          }}>All</button
+        >
+        <button
+          class={filter == "completed" ? "active" : ""}
+          on:click={() => {
+            filtrate("completed");
+          }}>Completed</button
+        >
+        <button
+          class={filter == "pending" ? "active" : ""}
+          on:click={() => {
+            filtrate("pending");
+          }}>Pending</button
+        >
       </div>
       <span>Close Completed</span>
     </div>
@@ -32,31 +62,11 @@
     justify-content: space-between;
   }
 
-  .actions {
+  .filter {
     margin: 1px;
     font-size: 18px;
     width: 45%;
     display: flex;
     justify-content: space-between;
-  }
-
-  .actions .active {
-    color: var(--ReferenceBlue);
-  }
-
-  .actions .active:hover {
-    color: var(--ReferenceBlue);
-    font-weight: bolder;
-  }
-
-  .actions h5:hover {
-    cursor: pointer;
-    color: #fff;
-  }
-
-  @media only screen and (min-width: 1200px) {
-    .actions {
-      width: 40%;
-    }
   }
 </style>

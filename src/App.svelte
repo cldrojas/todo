@@ -3,6 +3,7 @@
   import AddTodo from "./components/AddTodo.svelte";
   import Todo from "./components/Todo.svelte";
   import TodoInfo from "./components/Filters.svelte";
+  import Filters from "./components/Filters.svelte";
 
   let todos = [];
   let name = "";
@@ -18,7 +19,6 @@
     ];
 
     name = "";
-    console.log("Todos list: ", todos);
   }
 
   function toggle(id) {
@@ -27,51 +27,52 @@
       : (todos[id].status = "completed");
     todos = [...todos];
   }
+
+  function setFilter(value) {
+    filter = value.detail.filter;
+    console.log("filtered value: ", value.detail.filter);
+  }
 </script>
 
 <div class="App">
   <div class="App-container">
     <div class="App-content">
       <Header />
-      <div class="new">
-        <div class="form">
-          <input type="text" bind:value={name} />
-          <button on:click={addTask}>Add</button>
-        </div>
-        <div class="todos">
-          {#each todos as todo, id}
-            {#if filter == "all"}
+      <div class="form">
+        <input type="text" bind:value={name} />
+        <button on:click={addTask}>Add</button>
+      </div>
+      <div class="todos">
+        {#each todos as todo, id}
+          {#if filter == "all"}
+            <Todo
+              name={todo["name"]}
+              done={todo["status"] == "completed" ? true : false}
+              on:done={() => toggle(id)}
+            />
+          {:else if filter == "completed"}
+            {#if todo["status"] == "completed"}
               <Todo
                 name={todo["name"]}
                 done={todo["status"] == "completed" ? true : false}
                 on:done={() => toggle(id)}
               />
             {/if}
-          {/each}
-        </div>
-
-        <div class="filter">
-          <button
-            class={filter == "all" ? "active" : ""}
-            on:click={() => {
-              filter = "all";
-            }}>All</button
-          >
-          <button
-            class={filter == "completed" ? "active" : ""}
-            on:click={() => {
-              filter = "completed";
-            }}>Completed</button
-          >
-          <button
-            class={filter == "pending" ? "active" : ""}
-            on:click={() => {
-              filter = "pending";
-            }}>Pending</button
-          >
-        </div>
+          {:else if filter == "pending"}
+            {#if todo["status"] == "pending"}
+              <Todo
+                name={todo["name"]}
+                done={todo["status"] == "completed" ? true : false}
+                on:done={() => toggle(id)}
+              />
+            {/if}
+          {/if}
+        {/each}
       </div>
+
+      <Filters on:filtrate={(val) => setFilter(val)} />
     </div>
+    <h2>Filtro seleccionado: {filter}</h2>
     <div class="attribution">
       Challenge by <a
         href="https://www.frontendmentor.io?ref=challenge"
@@ -100,10 +101,6 @@
     margin: 0;
     background-color: var(--VeryDarkBlue);
   } */
-  .active {
-    background-color: blue;
-    color: white;
-  }
 
   .attribution {
     margin-top: 30px;

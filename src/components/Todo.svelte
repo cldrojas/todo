@@ -35,15 +35,22 @@
   .Todo {
     margin: 1px 0 1px 0;
   }
-
+  .Todo-container {
+    background-color: aliceblue;
+  }
   .Todo-content {
-    cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
+    justify-content: space-evenly;
+    border-bottom: var(--DarkGrayishBlue) 0.01em outset;
 
     background-color: var(--VeryDarkDesaturatedBlue);
+    margin: auto;
+  }
+
+  .Todo-content:hover > button {
+    cursor: pointer;
+    color: var(--DarkGrayishBlue);
   }
 
   .Todo-title {
@@ -51,10 +58,21 @@
     border-style: none;
     height: 50px;
     background-color: transparent;
-    color: aliceblue;
-    font-size: 18px;
+    color: var(--DarkDesaturatedBlue);
     align-items: center;
-    width: 70%;
+    width: 85%;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  button {
+    background: transparent;
+    font-size: 18px;
+    padding: 20px;
+    color: var(--VeryDarkDesaturatedBlue);
+    border: none;
   }
 
   span {
@@ -64,10 +82,11 @@
     border-radius: 50%;
     margin: 1em;
     border: 0.1em solid darkslategrey;
+    cursor: pointer;
   }
 
   span:hover {
-    border: 2px solid aliceblue;
+    border: 0.1em solid aliceblue;
   }
 
   .completed {
@@ -78,6 +97,6 @@
 
   .dash {
     text-decoration: line-through;
-    text-decoration-thickness: 3px;
+    text-decoration-thickness: 2px;
   }
 </style>

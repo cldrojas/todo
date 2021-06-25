@@ -13,15 +13,17 @@
 <style>
   .Header {
     color: aliceblue;
-    margin: 1em 0 0 0;
   }
 
   .Header-container {
     display: grid;
     margin: auto;
+    height: 140px;
   }
 
   .Header-content {
+    width: 100%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;

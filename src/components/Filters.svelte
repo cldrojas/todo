@@ -2,7 +2,7 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   export let items;
-  export let filter;
+  export let filter = "all";
   $: filter;
 
   const filtrate = (val) => {
@@ -25,15 +25,15 @@
           on:click={() => filtrate("all")}>All</button
         >
         <button
+          class={filter == "pending" ? "active" : ""}
+          on:click={() => filtrate("pending")}>Active</button
+        >
+        <button
           class={filter == "completed" ? "active" : ""}
           on:click={() => filtrate("completed")}>Completed</button
         >
-        <button
-          class={filter == "pending" ? "active" : ""}
-          on:click={() => filtrate("pending")}>Pending</button
-        >
       </div>
-      <span on:click={(id) => clear(id)}>Close Completed</span>
+      <span on:click={(id) => clear(id)}>Clear Completed</span>
     </div>
   </div>
 </div>
@@ -48,6 +48,7 @@
     display: flex;
     justify-content: space-evenly;
     background-color: var(--VeryDarkDesaturatedBlue);
+    height: 50px;
   }
 
   .Filters-content {
@@ -58,11 +59,36 @@
     justify-content: space-between;
   }
 
+  .Filters-content span:last-child {
+    color: var(--VeryDarkGrayishBlue);
+    cursor: pointer;
+  }
+
+  span:last-child:hover {
+    color: var(--DarkDesaturatedBlue);
+  }
+
   .filter {
     margin: 1px;
     font-size: 18px;
     width: 45%;
     display: flex;
     justify-content: space-between;
+  }
+
+  button {
+    background-color: var(--VeryDarkDesaturatedBlue);
+    color: var(--VeryDarkGrayishBlue);
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: var(--DarkDesaturatedBlue);
+  }
+
+  .active,
+  .active:hover {
+    color: var(--ReferenceBlue);
   }
 </style>

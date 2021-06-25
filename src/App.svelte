@@ -3,7 +3,7 @@
   import Todo from "./components/Todo.svelte";
   import Filters from "./components/Filters.svelte";
 
-  let todos = [];
+  let todos = [{ name: "test", status: "pending" }];
   let name = "";
   let filter = "all";
   let remaining;
@@ -49,6 +49,7 @@
     <div class="App-content">
       <Header />
       <form class="form" on:submit={(e) => e.preventDefault()}>
+        <span />
         <input
           type="text"
           bind:value={name}
@@ -57,7 +58,7 @@
         />
         <button hidden on:click={addTask} />
       </form>
-      <div class="todos">
+      <div class="Todos">
         {#each todos as todo, id}
           {#if filter == "all"}
             <Todo
@@ -113,16 +114,43 @@
   }
 
   .App-container {
-    width: 50%;
+    width: 40%;
     margin: 0 auto;
-    background-color: var(--VeryDarkDesaturatedBlue);
-    height: 300px;
   }
 
-  /*   .List {
+  .Todos {
     margin: 0;
-    background-color: var(--VeryDarkBlue);
-  } */
+    background-color: var(--VeryDarkDesaturatedBlue);
+  }
+
+  .form {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    margin-bottom: 1em;
+  }
+
+  span {
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: 1em;
+    border: 0.1em solid darkslategrey;
+  }
+
+  .form > input {
+    font-size: 18px;
+    color: var(--DarkDesaturatedBlue);
+    border: none;
+    background-color: var(--VeryDarkDesaturatedBlue);
+    width: 90%;
+  }
+
+  .form > input:focus {
+    outline: none;
+  }
 
   .attribution {
     margin-top: 30px;

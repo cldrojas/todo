@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import { theme } from "../store.js";
   const dispatch = createEventDispatcher();
   export let items;
   export let filter = "all";
@@ -15,8 +16,8 @@
   };
 </script>
 
-<div class="Filters">
-  <div class="Filters-container">
+<div class="Filters {$theme}">
+  <div class="Filters-container ">
     <div class="Filters-content">
       <span>{items} items left</span>
       <div class="filter">
@@ -49,6 +50,10 @@
     justify-content: space-evenly;
     background-color: var(--VeryDarkDesaturatedBlue);
     height: 50px;
+  }
+
+  .light {
+    background-color: var(--VeryDarkGreen);
   }
 
   .Filters-content {

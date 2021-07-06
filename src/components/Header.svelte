@@ -1,11 +1,23 @@
 <script>
+  import { theme } from "../store.js";
+  function toggleTheme() {
+    $theme == "dark" ? theme.set("light") : theme.set("dark");
+  }
 </script>
 
 <div class="Header">
   <div class="Header-container">
     <div class="Header-content">
       <h1>TODO</h1>
-      <span><img src="images/icon-sun.svg" alt="ligth mode" /></span>
+      <span
+        ><img
+          on:click={toggleTheme}
+          src={$theme == "dark"
+            ? "images/icon-sun.svg"
+            : "images/icon-moon.svg"}
+          alt="ligth mode"
+        /></span
+      >
     </div>
   </div>
 </div>

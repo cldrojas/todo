@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
 
-  //Declare the dispatch
+  import { theme } from "../store.js";
   const dispatch = createEventDispatcher();
 
   export let name;
@@ -19,9 +19,9 @@
   };
 </script>
 
-<div class="Todo">
-  <div class="Todo-container">
-    <div class="Todo-content">
+<div class="Todo {$theme}">
+  <div class="Todo-container ">
+    <div class="Todo-content ">
       <span class={estado} on:click={completed} />
       <div class="Todo-title">
         <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
@@ -35,16 +35,15 @@
   .Todo {
     margin: 1px 0 1px 0;
   }
+
   .Todo-container {
-    background-color: aliceblue;
+    background-color: var(--bg-dark);
   }
   .Todo-content {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     border-bottom: var(--DarkGrayishBlue) 0.01em outset;
-
-    background-color: var(--VeryDarkDesaturatedBlue);
     margin: auto;
   }
 
@@ -71,7 +70,7 @@
     background: transparent;
     font-size: 18px;
     padding: 20px;
-    color: var(--VeryDarkDesaturatedBlue);
+    color: var(--bg-dark);
     border: none;
   }
 
@@ -98,5 +97,17 @@
   .dash {
     text-decoration: line-through;
     text-decoration-thickness: 2px;
+  }
+
+  .light .Todo-container {
+    color: var(--font-light);
+    background-color: var(--bg-light);
+  }
+
+  .light button {
+    color: var(--bg-light);
+  }
+  .light .Todo-content:hover > button {
+    color: var(--font-light);
   }
 </style>

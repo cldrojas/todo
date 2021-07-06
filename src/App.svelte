@@ -1,4 +1,5 @@
 <script>
+  import { theme } from "./store";
   import Header from "./components/Header.svelte";
   import Todo from "./components/Todo.svelte";
   import Filters from "./components/Filters.svelte";
@@ -44,7 +45,8 @@
   }
 </script>
 
-<div class="App">
+<!-- TODO: tengo la variable global falta reaccionar en css -->
+<div class="App {$theme}">
   <div class="App-container">
     <div class="App-content">
       <Header />
@@ -120,14 +122,13 @@
 
   .Todos {
     margin: 0;
-    background-color: var(--VeryDarkDesaturatedBlue);
   }
 
   .form {
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: var(--VeryDarkDesaturatedBlue);
+    background-color: var(--bgDark);
     margin-bottom: 1em;
   }
 
@@ -144,7 +145,7 @@
     font-size: 18px;
     color: var(--DarkDesaturatedBlue);
     border: none;
-    background-color: var(--VeryDarkDesaturatedBlue);
+    background-color: var(--bgDark);
     width: 90%;
   }
 
@@ -160,5 +161,20 @@
 
   .attribution a {
     color: var(--ReferenceBlue);
+  }
+
+  .light {
+    height: 100vh;
+    background-image: url("images/bg-desktop-light.jpg");
+    background-color: aliceblue;
+  }
+
+  .light .form {
+    background-color: var(--bgLight);
+  }
+
+  .light .form > input {
+    background-color: var(--bgLight);
+    color: var(--fontLight);
   }
 </style>

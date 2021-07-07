@@ -18,7 +18,7 @@
     "bugs": {
         "url": "https://github.com/cldrojas/todo/issues"
     },
-    "homepage": "https://github.com/cldrojas/todo#readme",
+    "homepage": "https://github.com/cldrojas/todo",
     "devDependencies": {
         "@babel/core": "^7.14.6",
         "babel-loader": "^8.2.2",

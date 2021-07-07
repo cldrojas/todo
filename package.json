@@ -7,7 +7,10 @@
         "build": "webpack --mode production",
         "start": "webpack serve --open --mode development"
     },
-    "keywords": [],
+    "keywords": [
+        "javascript",
+        "svelte"
+    ],
     "author": "",
     "license": "ISC",
     "devDependencies": {
@@ -23,6 +26,5 @@
         "webpack": "^5.39.1",
         "webpack-cli": "^4.7.2",
         "webpack-dev-server": "^3.11.2"
-    },
-    "dependencies": {}
+    }
 }

@@ -37,19 +37,19 @@
   }
 
   .Todo-container {
-    background-color: var(--bg-dark);
+    background-color: var(--bgDark);
   }
   .Todo-content {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    border-bottom: var(--DarkGrayishBlue) 0.01em outset;
+    border-bottom: var(--bgLight) 0.01em outset;
     margin: auto;
   }
 
   .Todo-content:hover > button {
     cursor: pointer;
-    color: var(--DarkGrayishBlue);
+    color: var(--fontDark);
   }
 
   .Todo-title {
@@ -57,7 +57,7 @@
     border-style: none;
     height: 50px;
     background-color: transparent;
-    color: var(--DarkDesaturatedBlue);
+    color: var(--HoverDark);
     align-items: center;
     width: 85%;
   }
@@ -70,7 +70,7 @@
     background: transparent;
     font-size: 18px;
     padding: 20px;
-    color: var(--bg-dark);
+    color: var(--bgDark);
     border: none;
   }
 
@@ -90,24 +90,36 @@
 
   .completed {
     background-image: url(/images/icon-check.svg);
-    background-repeat: no-repeat;
     background-size: cover;
   }
 
   .dash {
+    color: var(--fontDark);
     text-decoration: line-through;
     text-decoration-thickness: 2px;
   }
 
   .light .Todo-container {
-    color: var(--font-light);
-    background-color: var(--bg-light);
+    color: var(--fontLight);
+    background-color: var(--bgLight);
+  }
+
+  .light .Todo-content {
+    border-bottom: none;
+  }
+
+  .light .Todo-title {
+    color: var(--fontLight);
   }
 
   .light button {
-    color: var(--bg-light);
+    color: transparent;
   }
   .light .Todo-content:hover > button {
-    color: var(--font-light);
+    color: var(--fontLight);
+  }
+
+  .light span {
+    border: 0.1em solid var(--fontLight);
   }
 </style>

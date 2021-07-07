@@ -9,15 +9,15 @@
   <div class="Header-container">
     <div class="Header-content">
       <h1>TODO</h1>
-      <span
-        ><img
+      <span>
+        <img
           on:click={toggleTheme}
           src={$theme == "dark"
             ? "images/icon-sun.svg"
             : "images/icon-moon.svg"}
-          alt="ligth mode"
-        /></span
-      >
+          alt="toggle theme"
+        />
+      </span>
     </div>
   </div>
 </div>
@@ -45,5 +45,9 @@
     font-size: 36px;
     font-weight: 700;
     letter-spacing: 10px;
+  }
+
+  span:hover {
+    cursor: pointer;
   }
 </style>

@@ -55,7 +55,6 @@
         <input
           type="text"
           bind:value={name}
-          on:submit={addTask}
           placeholder="Create a new todo..."
         />
         <button hidden on:click={addTask} />
@@ -143,7 +142,9 @@
 
   .form > input {
     font-size: 18px;
-    color: var(--DarkDesaturatedBlue);
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--fontDark);
     border: none;
     background-color: var(--bgDark);
     width: 90%;
@@ -151,6 +152,7 @@
 
   .form > input:focus {
     outline: none;
+    color: var(--HoverDark);
   }
 
   .attribution {
@@ -173,8 +175,16 @@
     background-color: var(--bgLight);
   }
 
+  .light span {
+    border: 0.1em solid aliceblue;
+  }
+
   .light .form > input {
-    background-color: var(--bgLight);
+    background-color: transparent;
     color: var(--fontLight);
+  }
+
+  .light .form > input::placeholder {
+    color: aliceblue;
   }
 </style>

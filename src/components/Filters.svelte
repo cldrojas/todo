@@ -48,12 +48,8 @@
     height: 100%;
     display: flex;
     justify-content: space-evenly;
-    background-color: var(--VeryDarkDesaturatedBlue);
+    background-color: var(--bgDark);
     height: 50px;
-  }
-
-  .light {
-    background-color: var(--VeryDarkGreen);
   }
 
   .Filters-content {
@@ -65,12 +61,12 @@
   }
 
   .Filters-content span:last-child {
-    color: var(--VeryDarkGrayishBlue);
+    color: var(--fontDark);
     cursor: pointer;
   }
 
   span:last-child:hover {
-    color: var(--DarkDesaturatedBlue);
+    color: var(--HoverDark);
   }
 
   .filter {
@@ -82,18 +78,46 @@
   }
 
   button {
-    background-color: var(--VeryDarkDesaturatedBlue);
-    color: var(--VeryDarkGrayishBlue);
+    background-color: var(--bgDark);
+    color: var(--fontDark);
     border: none;
     cursor: pointer;
   }
 
   button:hover {
-    color: var(--DarkDesaturatedBlue);
+    color: var(--HoverDark);
   }
 
   .active,
   .active:hover {
     color: var(--ReferenceBlue);
+  }
+
+  .light .Filters-container {
+    background-color: var(--bgLight);
+  }
+  .light .Filters-content span {
+    color: var(--fontLight);
+  }
+  .light .Filters-content span:last-child {
+    color: var(--fontLight);
+  }
+
+  .light span:last-child:hover {
+    color: var(--HoverLight);
+  }
+
+  .light button {
+    background-color: transparent;
+    color: var(--fontLight);
+  }
+
+  .light button:hover {
+    color: var(--HoverLight);
+  }
+
+  .light .active,
+  .light .active:hover {
+    color: var(--LightReferenceBlue);
   }
 </style>

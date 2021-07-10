@@ -43,9 +43,13 @@
   function setFilter(value) {
     filter = value.detail.filter;
   }
+
+  function sort(id) {
+    //TODO: check position and reorder list
+    console.log("moving", todos[id].name);
+  }
 </script>
 
-<!-- TODO: tengo la variable global falta reaccionar en css -->
 <div class="App {$theme}">
   <div class="App-container">
     <div class="App-content">
@@ -67,6 +71,7 @@
               done={todo["status"] == "completed" ? true : false}
               on:done={() => toggle(id)}
               on:remove={() => remove(id)}
+              on:sort={() => sort(id)}
             />
           {:else if filter == "completed"}
             {#if todo["status"] == "completed"}

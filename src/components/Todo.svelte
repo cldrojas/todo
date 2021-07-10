@@ -7,19 +7,28 @@
   export let name;
   export let done;
 
-  //if you wonder $: its svelte way make reactive statement
   $: estado = done ? "completed" : "pending";
   const remove = (id) => {
     dispatch("remove", { id });
   };
   const completed = (id) => {
     done = !done;
-    //Dispatch the doneite event with object data
     dispatch("done", { id, estado });
+  };
+  const sort = (id) => {
+    dispatch("sort", { id });
   };
 </script>
 
-<div class="Todo {$theme}">
+<div
+  class="Todo {$theme}"
+  draggable="true"
+  on:dragstart={(e) => console.log("start dragging")}
+  on:dragover={(e) => {
+    e.preventDefault();
+  }}
+  on:drop={sort}
+>
   <div class="Todo-container ">
     <div class="Todo-content ">
       <span class={estado} on:click={completed} />

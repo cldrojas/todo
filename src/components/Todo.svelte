@@ -15,19 +15,22 @@
     done = !done;
     dispatch("done", { id, estado });
   };
-  const sort = (id) => {
-    dispatch("sort", { id });
+  const drag = (id) => {
+    dispatch("drag", { id });
+  };
+  const drop = (id) => {
+    dispatch("drop", { id });
   };
 </script>
 
 <div
   class="Todo {$theme}"
   draggable="true"
-  on:dragstart={(e) => console.log("start dragging")}
   on:dragover={(e) => {
     e.preventDefault();
   }}
-  on:drop={sort}
+  on:dragstart={drag}
+  on:drop={drop}
 >
   <div class="Todo-container ">
     <div class="Todo-content ">

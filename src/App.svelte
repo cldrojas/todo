@@ -8,6 +8,8 @@
   let name = "";
   let filter = "all";
   let remaining;
+  let temp;
+  let from;
 
   $: remaining = todos.filter((item) => item.status === "pending").length;
 
@@ -44,9 +46,15 @@
     filter = value.detail.filter;
   }
 
-  function sort(id) {
-    //TODO: check position and reorder list
-    console.log("moving", todos[id].name);
+  function drag(id) {
+    temp = todos[id];
+    from = id;
+  }
+
+  function drop(to) {
+    remove(from);
+    todos.splice(to, 0, temp);
+    todos = [...todos];
   }
 </script>
 
@@ -71,7 +79,8 @@
               done={todo["status"] == "completed" ? true : false}
               on:done={() => toggle(id)}
               on:remove={() => remove(id)}
-              on:sort={() => sort(id)}
+              on:drag={() => drag(id)}
+              on:drop={() => drop(id)}
             />
           {:else if filter == "completed"}
             {#if todo["status"] == "completed"}

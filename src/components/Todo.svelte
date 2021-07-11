@@ -29,8 +29,13 @@
   on:dragover={(e) => {
     e.preventDefault();
   }}
+  on:touchmove={(e) => {
+    e.preventDefault();
+  }}
   on:dragstart={drag}
+  on:touchstart={drag}
   on:drop={drop}
+  on:touchend={drop}
 >
   <div class="Todo-container ">
     <div class="Todo-content ">

@@ -8,6 +8,8 @@
   let name = "";
   let filter = "all";
   let remaining;
+  let temp;
+  let from;
 
   $: remaining = todos.filter((item) => item.status === "pending").length;
 
@@ -43,9 +45,19 @@
   function setFilter(value) {
     filter = value.detail.filter;
   }
+
+  function drag(id) {
+    temp = todos[id];
+    from = id;
+  }
+
+  function drop(to) {
+    remove(from);
+    todos.splice(to, 0, temp);
+    todos = [...todos];
+  }
 </script>
 
-<!-- TODO: tengo la variable global falta reaccionar en css -->
 <div class="App {$theme}">
   <div class="App-container">
     <div class="App-content">
@@ -67,6 +79,8 @@
               done={todo["status"] == "completed" ? true : false}
               on:done={() => toggle(id)}
               on:remove={() => remove(id)}
+              on:drag={() => drag(id)}
+              on:drop={() => drop(id)}
             />
           {:else if filter == "completed"}
             {#if todo["status"] == "completed"}

@@ -101,7 +101,7 @@
   }
 
   .completed {
-    background-image: url(/images/icon-check.svg);
+    background-image: url(/todo/images/icon-check.svg);
     background-size: cover;
   }
 

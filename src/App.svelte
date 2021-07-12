@@ -201,4 +201,13 @@
   .light .form > input::placeholder {
     color: aliceblue;
   }
+
+  @media only screen and (min-width: 360px) and (max-width: 980px) {
+    .App {
+      background-image: url("images/bg-mobile-dark.jpg");
+    }
+    .App-container {
+      width: 85%;
+    }
+  }
 </style>

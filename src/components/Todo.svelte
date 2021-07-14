@@ -21,6 +21,10 @@
   const drop = (id) => {
     dispatch("drop", { id });
   };
+
+  function touched() {
+    console.log("you touched me fucking pervert!");
+  }
 </script>
 
 <div
@@ -29,11 +33,9 @@
   on:dragover={(e) => {
     e.preventDefault();
   }}
-  on:touchmove={(e) => {
-    e.preventDefault();
-  }}
   on:dragstart={drag}
   on:touchstart={drag}
+  on:touch={touched}
   on:drop={drop}
   on:touchend={drop}
 >

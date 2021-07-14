@@ -161,11 +161,12 @@
     color: var(--fontDark);
     border: none;
     background-color: var(--bgDark);
-    width: 90%;
+    height: 60%;
+    width: 80%;
   }
 
   .form > input:focus {
-    outline: none;
+    outline: var(--fontDark) ridge 1px;
     color: var(--HoverDark);
   }
 

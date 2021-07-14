@@ -81,6 +81,9 @@
               on:remove={() => remove(id)}
               on:drag={() => drag(id)}
               on:drop={() => drop(id)}
+              on:tap={() => {
+                alert("done");
+              }}
             />
           {:else if filter == "completed"}
             {#if todo["status"] == "completed"}
@@ -206,6 +209,9 @@
   @media only screen and (min-width: 360px) and (max-width: 980px) {
     .App {
       background-image: url("images/bg-mobile-dark.jpg");
+    }
+    .light {
+      background-image: url("images/bg-mobile-light.jpg");
     }
     .App-container {
       width: 85%;

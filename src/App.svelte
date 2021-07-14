@@ -161,11 +161,12 @@
     color: var(--fontDark);
     border: none;
     background-color: var(--bgDark);
-    width: 90%;
+    height: 60%;
+    width: 80%;
   }
 
   .form > input:focus {
-    outline: none;
+    outline: var(--fontDark) ridge 1px;
     color: var(--HoverDark);
   }
 
@@ -200,5 +201,14 @@
 
   .light .form > input::placeholder {
     color: aliceblue;
+  }
+
+  @media only screen and (min-width: 360px) and (max-width: 980px) {
+    .App {
+      background-image: url("images/bg-mobile-dark.jpg");
+    }
+    .App-container {
+      width: 85%;
+    }
   }
 </style>

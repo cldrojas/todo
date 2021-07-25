@@ -6,8 +6,11 @@
 
   export let name;
   export let done;
+  export let deadline;
 
   $: estado = done ? "completed" : "pending";
+  $: overdue = deadline < new Date().toLocaleDateString() ? "overdue" : "";
+
   const remove = (id) => {
     dispatch("remove", { id });
   };
@@ -21,10 +24,13 @@
   const drop = (id) => {
     dispatch("drop", { id });
   };
-
-  function touched() {
-    console.log("you touched me fucking pervert!");
-  }
+  const dragtouch = (id) => {
+    dispatch("dragtouch", { id });
+  };
+  const droptouch = (id) => {
+    console.log("droped at: ", id);
+    dispatch("droptouch", { id });
+  };
 </script>
 
 <div
@@ -33,17 +39,25 @@
   on:dragover={(e) => {
     e.preventDefault();
   }}
+  on:touchmove={(e) => {
+    e.preventDefault();
+  }}
   on:dragstart={drag}
-  on:touchstart={drag}
-  on:touch={touched}
   on:drop={drop}
-  on:touchend={drop}
+  on:touchstart={dragtouch}
+  on:touchend={droptouch}
 >
   <div class="Todo-container ">
     <div class="Todo-content ">
       <span class={estado} on:click={completed} />
       <div class="Todo-title">
         <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
+      </div>
+
+      <div class="Todo-deadline">
+        <h5 class={overdue}>
+          {new Date(deadline).toLocaleDateString()}
+        </h5>
       </div>
       <button on:click={remove}>&#10006;</button>
     </div>
@@ -116,6 +130,10 @@
     color: var(--fontDark);
     text-decoration: line-through;
     text-decoration-thickness: 2px;
+  }
+
+  .overdue {
+    color: tomato;
   }
 
   .light .Todo-container {

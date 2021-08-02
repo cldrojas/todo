@@ -174,6 +174,10 @@
     width: 80%;
   }
 
+  .form > input::-webkit-datetime-edit {
+    visibility: hidden;
+  }
+
   .form > input:focus {
     outline: var(--fontDark) ridge 1px;
     color: var(--HoverDark);

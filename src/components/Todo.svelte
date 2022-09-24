@@ -48,11 +48,7 @@
   <div class="Todo-container ">
     <div class="Todo-content ">
       <span on:click={completed}>
-        <img
-          class={estado}
-          src="/public/images/icon-check.svg"
-          alt="completed"
-        />
+        <img class={estado} src="/todo/images/icon-check.svg" alt="completed" />
       </span>
       <div class="Todo-title">
         <h5 class={estado == "completed" && "dash"}>{name}</h5>

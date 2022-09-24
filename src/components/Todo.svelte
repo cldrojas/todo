@@ -47,9 +47,15 @@
 >
   <div class="Todo-container ">
     <div class="Todo-content ">
-      <span class={estado} on:click={completed} />
+      <span on:click={completed}>
+        <img
+          class={estado}
+          src="/public/images/icon-check.svg"
+          alt="completed"
+        />
+      </span>
       <div class="Todo-title">
-        <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
+        <h5 class={estado == "completed" && "dash"}>{name}</h5>
       </div>
 
       <button on:click={remove}>&#10006;</button>
@@ -114,9 +120,13 @@
     border: 0.1em solid aliceblue;
   }
 
+  span > img {
+    height: 1em;
+    opacity: 0;
+  }
+
   .completed {
-    background-image: url(/todo/images/icon-check.svg);
-    background-size: cover;
+    opacity: 1;
   }
 
   .dash {

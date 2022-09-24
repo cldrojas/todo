@@ -6,10 +6,8 @@
 
   export let name;
   export let done;
-  export let deadline;
 
   $: estado = done ? "completed" : "pending";
-  $: overdue = deadline < new Date().toLocaleDateString() ? "overdue" : "";
 
   const remove = (id) => {
     dispatch("remove", { id });
@@ -54,11 +52,6 @@
         <h5 class={estado == "completed" ? "dash" : ""}>{name}</h5>
       </div>
 
-      <div class="Todo-deadline">
-        <h5 class={overdue}>
-          {new Date(deadline).toLocaleDateString()}
-        </h5>
-      </div>
       <button on:click={remove}>&#10006;</button>
     </div>
   </div>

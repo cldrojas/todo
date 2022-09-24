@@ -4,9 +4,8 @@
   import Todo from "./components/Todo.svelte";
   import Filters from "./components/Filters.svelte";
 
-  let todos = [{ name: "test", status: "pending", deadline: "8/24/2021" }];
+  let todos = [{ name: "test", status: "pending" }];
   let name = "";
-  let deadline = "";
   let filter = "all";
   let remaining;
   let temp;
@@ -15,18 +14,15 @@
   $: remaining = todos.filter((item) => item.status === "pending").length;
 
   function addTask() {
-    console.log("date aquired: ", deadline);
     if (name != "") {
       todos = [
         {
           name: name,
           status: "pending",
-          deadline: deadline,
         },
         ...todos,
       ];
     }
-    deadline = "";
     name = "";
   }
 
@@ -73,7 +69,6 @@
           bind:value={name}
           placeholder="Create a new todo..."
         />
-        <input type="date" bind:value={deadline} />
         <button hidden on:click={addTask} />
       </form>
       <div class="Todos">
